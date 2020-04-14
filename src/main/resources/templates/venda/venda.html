@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+	th:replace="~{default :: layout(~{::title}, ~{::section})}">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<title>Item Venda</title>
+
+</head>
+<body>
+
+	    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+               <!-- <h1>Vendas PDV</h1>  -->
+   
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+   
+              <!-- <li class="breadcrumb-item"><a href="#">Inicio</a></li> --> 
+             <li class="breadcrumb-item active">Vendas PDV</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+      <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Venda PDV</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form">
+                <div class="card-body">
+                  <div class="form-group">
+                  
+				    <select class="form-control  selectVenda" id="produtoSelect">
+                    </select>
+                  </div>
+                
+
+                  
+                <table class="table" id="tabelaitemvenda">
+                   <thead>
+                    <tr>
+                    <th style="width:50%">Produto</th>
+                    <th>Preço</th>
+                    <th>Qtd</th>
+                    <th>Subtotal</th>
+                    <th>Excluir</th>
+                   </tr>
+                  </thead>
+                   <tbody id="divitens">
+                   </tbody> 
+                     <tfoot id="totalvenda">
+                   </tfoot>
+                </table>
+                </div>
+                 </form>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="button" class="btn btn-danger" onclick='cancelarVenda();'>Cancelar Venda</button>
+                  <button type="button" data-toggle="modal" data-target="#modalPagamento" class="btn btn-success" style="margin-left:72%" onclick="listarPagamento()">Pagamento</button>
+                </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+<script type="text/javascript">
+
+
+
+
+
+ 
+
+
+function listar(){
+
+	  var idvenda = $("#idvenda").val();
+	  $.ajax({
+	    type: "POST",
+	    url: "/api/produto/listar",
+	    data: {idvenda:idvenda},
+	    success: function (result) {
+	      $("#divitens").html(result);
+	      table();
+	    },
+	    error: function() {
+	    }
+	  });
+	}
+</script>
+
+</body>
+
+
+</html>
