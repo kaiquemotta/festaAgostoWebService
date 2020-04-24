@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" th:replace="~{default :: layout(~{::title}, ~{::section})}">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Item Venda </title>
+</head>
+<body>
+<section>
+    <form class="text-center border border-light p-5" action="#!">
+
+        <p class="h4 mb-4">Produto Id: </p>
+
+        <!-- Name -->
+        <input type="text" class="form-control mb-4" placeholder="Nome" id="id-produto">
+
+        <!-- Subject -->
+        <label>Tipo</label>
+        <select class="browser-default custom-select mb-4" id="tipo-produto">
+            <option value="" disabled>Selecione um Tipo</option>
+            <option value="1" selected>Bebida</option>
+            <option value="2">Massas</option>
+        </select>
+
+        <!-- Email -->
+        <input type="number" class="form-control mb-4" placeholder="Preço" id="preco-produto">
+
+        <!-- Message -->
+        <div class="form-group">
+                            <textarea class="form-control rounded-0" rows="3"
+                                      placeholder="Descrição" id="descricao-produto"></textarea>
+        </div>
+    </form>
+</section>
+
+</body>
+</html>
+

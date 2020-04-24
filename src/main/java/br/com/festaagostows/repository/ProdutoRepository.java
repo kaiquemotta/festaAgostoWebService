@@ -1,6 +1,7 @@
 package br.com.festaagostows.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +15,10 @@ public interface ProdutoRepository extends JpaRepository <Produto, Long> {
 	
 	@Query(value = "SELECT * FROM produto p WHERE p.nome LIKE %:keyword%" ,nativeQuery = true)
 	List<Produto> findByKeyWorld(@Param("keyword")String keyword);
+
+
+	@Query(value = "SELECT * FROM produto p WHERE p.nome = :desc " ,nativeQuery = true)
+	Optional<Produto> findByDesc(@Param("desc")String desc);
+
 
 }
